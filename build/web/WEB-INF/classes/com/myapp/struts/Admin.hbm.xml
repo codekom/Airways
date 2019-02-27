@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 27, 2015 11:29:25 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.myapp.struts.Admin" table="ADMIN" schema="AERO">
+        <id name="username" type="string">
+            <column name="USERNAME" length="30" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="30" />
+        </property>
+        <property name="mail" type="string">
+            <column name="MAIL" length="30" />
+        </property>
+    </class>
+</hibernate-mapping>

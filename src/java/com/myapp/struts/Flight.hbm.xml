@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 27, 2015 11:29:25 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.myapp.struts.Flight" table="FLIGHT" schema="AERO">
+        <id name="fid" type="int">
+            <column name="FID" precision="5" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="fname" type="string">
+            <column name="FNAME" length="30" />
+        </property>
+        <property name="departure" type="string">
+            <column name="DEPARTURE" length="20" />
+        </property>
+        <property name="arrival" type="string">
+            <column name="ARRIVAL" length="20" />
+        </property>
+        <property name="seats" type="int">
+            <column name="SEATS" precision="3" scale="0" />
+        </property>
+        <property name="price" type="double">
+            <column name="PRICE" precision="7" />
+        </property>
+        <property name="day" type="int">
+            <column name="DAY" precision="2" scale="0" />
+        </property>
+        <property name="duration" type="string">
+            <column name="DURATION" length="20" />
+        </property>
+        <property name="fromloc" type="string">
+            <column name="FROMLOC" length="30" />
+        </property>
+        <property name="toloc" type="string">
+            <column name="TOLOC" length="30" />
+        </property>
+        <property name="bseats" type="int">
+            <column name="BSEATS" precision="3" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

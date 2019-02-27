@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="dummy" type="com.myapp.struts.dummy"/>
+        <form-bean name="Flight" type="com.myapp.struts.Flight"/>
+        <form-bean name="Booking" type="com.myapp.struts.Booking"/>
+        <form-bean name="Passenger" type="com.myapp.struts.Passenger"/>
+        <form-bean name="Admin" type="com.myapp.struts.Admin"/>
+    
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards>
+        <forward name="welcome"  path="/Welcome.do"/>
+    </global-forwards>
+
+    <action-mappings>
+        <action input="/admin.jsp" name="Admin" path="/adminServ" scope="request" type="com.myapp.struts.adminServ">
+              <forward name="success"  path="/adminPage.jsp"/>
+        </action>
+        <action input="/home.jsp" name="Passenger" path="/PloginServ" scope="request" type="com.myapp.struts.PloginServ">
+              <forward name="success"  path="/cpage.jsp"/>
+        </action>
+        <action input="/pregister.jsp" name="Passenger" path="/PassDetailServ" scope="request" type="com.myapp.struts.PassDetailServ">
+              <forward name="success"  path="/pregister.jsp"/>
+        </action>
+        <action input="/addFlights.jsp" name="Flight" path="/FlightServ" scope="request" type="com.myapp.struts.FlightServ">
+              <forward name="success"  path="/addFlights.jsp"/>
+        </action>
+        <action input="/adminPage.jsp" name="Flight" path="/viewFlights" scope="request" type="com.myapp.struts.viewFlights">
+              <forward name="success"  path="/ViewFlights.jsp"/>
+        </action>
+        <action input="/SearchFlight.jsp" name="Flight" path="/searchFlightServ" scope="request" type="com.myapp.struts.searchFlightServ">
+              <forward name="success"  path="/flightsAvailable.jsp"/>
+        </action>
+        <action input="/updateFlights.jsp" name="Flight" path="/updateFlightServ" scope="request" type="com.myapp.struts.updateFlightServ">
+              <forward name="success"  path="/updateFlights.jsp"/>
+        </action>
+        <action input="/bookTicket.jsp" name="Booking" path="/bookTicketServ" scope="request" type="com.myapp.struts.bookTicketServ">
+              <forward name="success"  path="/bookTicket.jsp"/>
+        </action>
+        <action input="/cpage.jsp" name="Booking" path="/viewBTicket" scope="request" type="com.myapp.struts.viewBTicket">
+            <forward name="success"  path="/viewTicket.jsp"/>
+        </action>
+        <action path="/ListBticket" type="com.myapp.struts.ListBticket">
+           <forward name="success"  path="/viewTicket.jsp"/>  
+        </action>
+        <action path="/CancelTicket1" type="com.myapp.struts.CancelTicket1">
+            <forward name="success"  path="/ListBticket.do"/> 
+        </action>
+        <action input="/changeP.jsp" name="Passenger" path="/changePServ1" scope="request" type="com.myapp.struts.changePServ1">
+            <forward name="success"  path="/changeP.jsp"/> 
+        </action>
+        <action input="/forgotP.jsp" name="Passenger" path="/forgotPServ" scope="request" type="com.myapp.struts.forgotPServ">
+            <forward name="success"  path="/securityQ.jsp"/> 
+        </action>
+        <action input="/securityQ.jsp" name="Passenger" path="/answer" scope="request" type="com.myapp.struts.answer">
+             <forward name="success"  path="/changeFP.jsp"/>
+        </action>
+        <action input="/changeFP.jsp" name="Passenger" path="/changeFPServ" scope="request" type="com.myapp.struts.changeFPServ">
+             <forward name="success"  path="/changeFP.jsp"/> 
+        </action>
+        <action path="/viewUsers" type="com.myapp.struts.viewUsers">
+            <forward name="success"  path="/ViewUsers.jsp"/> 
+        </action>
+        
+        <action path="/Welcome" forward="/welcomeStruts.jsp"/>
+    </action-mappings>
+    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
+    
+    <!-- ========================= Tiles plugin ===============================-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from
+    web.xml, thenoverload them with parameters defined here. All parameters
+    are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true
+    (default), there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this
+    later case, it is still needed to declare one plugin per module.
+    The factory will be initialized with parameters found in the first
+    initialized plugin (generally the one associated with the default
+    module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+    -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+  
+</struts-config>

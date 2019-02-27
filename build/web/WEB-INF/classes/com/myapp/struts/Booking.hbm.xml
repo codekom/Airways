@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 27, 2015 11:29:25 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.myapp.struts.Booking" table="BOOKING" schema="AERO">
+        <id name="tid" type="int">
+            <column name="TID" precision="5" scale="0" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="passenger" class="com.myapp.struts.Passenger" fetch="select">
+            <column name="NAME" length="30" />
+        </many-to-one>
+        <property name="cardtype" type="string">
+            <column name="CARDTYPE" length="30" />
+        </property>
+        <property name="emonth" type="string">
+            <column name="EMONTH" length="10" />
+        </property>
+        <property name="eyear" type="string">
+            <column name="EYEAR" length="10" />
+        </property>
+        <property name="cardno" type="string">
+            <column name="CARDNO" length="30" />
+        </property>
+        <property name="fullname" type="string">
+            <column name="FULLNAME" length="30" />
+        </property>
+        <property name="age" type="int">
+            <column name="AGE" precision="3" scale="0" />
+        </property>
+        <property name="gender" type="string">
+            <column name="GENDER" length="10" />
+        </property>
+        <property name="bkfid" type="int">
+            <column name="BKFID" precision="5" scale="0" />
+        </property>
+        <property name="wanted" type="int">
+            <column name="WANTED" precision="2" scale="0" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

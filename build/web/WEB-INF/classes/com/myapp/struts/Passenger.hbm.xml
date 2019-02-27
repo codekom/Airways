@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 27, 2015 11:29:25 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.myapp.struts.Passenger" table="PASSENGER" schema="AERO">
+        <id name="name" type="string">
+            <column name="NAME" length="30" />
+            <generator class="assigned" />
+        </id>
+        <property name="passw" type="string">
+            <column name="PASSW" length="30" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="30" />
+        </property>
+        <property name="phone" type="string">
+            <column name="PHONE" length="11" />
+        </property>
+        <property name="sq" type="string">
+            <column name="SQ" length="30" />
+        </property>
+        <property name="ans" type="string">
+            <column name="ANS" length="30" />
+        </property>
+        <property name="sq2" type="string">
+            <column name="SQ2" length="30" />
+        </property>
+        <property name="ans2" type="string">
+            <column name="ANS2" length="30" />
+        </property>
+        <set name="bookings" inverse="true">
+            <key>
+                <column name="NAME" length="30" />
+            </key>
+            <one-to-many class="com.myapp.struts.Booking" />
+        </set>
+    </class>
+</hibernate-mapping>
